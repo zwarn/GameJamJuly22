@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -28,8 +29,8 @@ public class GameController : MonoBehaviour
 
     public void PlaceTile()
     {
-        _mapController.ChangeTile(_cursorController.CursorPosition(), _mapController.possibleTiles[0]);
-        Events.Instance().Move();
+        _mapController.ChangeTile(_cursorController.CursorPosition(), SelectionUI.Instance().GETSelectedTile());
+        Events.Instance().OnMadeMove();
     }
 
     public void afterPass()

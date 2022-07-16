@@ -15,10 +15,10 @@ public class Events : MonoBehaviour
         _instance = this;
     }
 
-    public event Action OnMove;
+    public event Action MoveMade;
 
-    public void Move()
+    public void OnMadeMove()
     {
-        OnMove?.Invoke();
+        MoveMade?.Invoke();
     }
 }
