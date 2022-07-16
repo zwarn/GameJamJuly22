@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        _targetPosition = _cursorController.CursorPosition();
+        _targetPosition = _cursorController.CursorWorldPosition();
         var distance = (transform.position - _targetPosition).magnitude;
         var movedPosition = Vector3.MoveTowards(transform.position, _targetPosition,
             translationSpeed * distance * Time.deltaTime);

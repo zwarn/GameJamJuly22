@@ -56,18 +56,28 @@ public class CursorController : MonoBehaviour
             _currentPosition += direction;
             centerCursor();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameController.Instance().PlaceTile();
+        }
     }
 
-    public Vector3 CursorPosition()
+    public Vector3 CursorWorldPosition()
     {
         var position = tilemap.GetCellCenterWorld((Vector3Int) _currentPosition);
         position.z = 0;
         return position;
     }
 
+    public Vector2Int CursorPosition()
+    {
+        return _currentPosition;
+    }
+
     private void centerCursor()
     {
-        cursor.transform.position = CursorPosition();
+        cursor.transform.position = CursorWorldPosition();
     }
 
     private void OnDrawGizmos()
