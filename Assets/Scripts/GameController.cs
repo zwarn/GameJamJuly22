@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UI;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameController : MonoBehaviour
 {
