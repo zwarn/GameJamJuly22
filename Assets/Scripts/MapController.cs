@@ -26,6 +26,11 @@ public class MapController : MonoBehaviour
     public int height = 6;
     public TerrainTile[] possibleTiles;
 
+    private void Start()
+    {
+        Generate();
+    }
+
     public void Generate()
     {
         GenerateTiles();
