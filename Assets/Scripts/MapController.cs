@@ -49,6 +49,10 @@ public class MapController : MonoBehaviour
         _tilemap.SetTile((Vector3Int) position, tile.tile);
     }
 
+    public TerrainTile GetTileAtPosition(Vector2Int position) {
+        return Tiles[position];
+    }
+
     private void GenerateTiles()
     {
         Tiles.Clear();
