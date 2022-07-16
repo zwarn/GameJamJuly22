@@ -59,7 +59,10 @@ public class CursorController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameController.Instance().PlaceTile(CursorPosition());
+            if (MapController.Instance().GetTileAtPosition(_currentPosition).type == TerrainType.Sand)
+            {
+                GameController.Instance().PlaceTile(CursorPosition());
+            }
         }
     }
 

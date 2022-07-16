@@ -26,6 +26,11 @@ public class MapController : MonoBehaviour
     public int height = 6;
     public TerrainTile[] possibleTiles;
 
+    private void Start()
+    {
+        Generate();
+    }
+
     public void Generate()
     {
         GenerateTiles();
@@ -42,6 +47,10 @@ public class MapController : MonoBehaviour
     {
         Tiles[position] = tile;
         _tilemap.SetTile((Vector3Int) position, tile.tile);
+    }
+
+    public TerrainTile GetTileAtPosition(Vector2Int position) {
+        return Tiles[position];
     }
 
     private void GenerateTiles()
