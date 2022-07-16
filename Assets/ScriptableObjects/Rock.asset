@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Rock
   m_EditorClassIdentifier: 
   type: 5
-  tile: {fileID: 0}
+  tile: {fileID: 11400000, guid: dcc8a477b6396a64eaaaffde4e72731e, type: 2}

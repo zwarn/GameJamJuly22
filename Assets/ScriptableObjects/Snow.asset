@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Snow
   m_EditorClassIdentifier: 
   type: 8
-  tile: {fileID: 0}
+  tile: {fileID: 11400000, guid: 28c5ecac38b6a38449526fb7c13b6855, type: 2}

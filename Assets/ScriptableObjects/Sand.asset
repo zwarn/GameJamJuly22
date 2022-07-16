@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Sand
   m_EditorClassIdentifier: 
   type: 3
-  tile: {fileID: 0}
+  tile: {fileID: 11400000, guid: 626cf4970c64c674ba55de87c3db6bbe, type: 2}

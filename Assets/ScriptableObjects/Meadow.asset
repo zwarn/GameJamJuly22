@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Meadow
   m_EditorClassIdentifier: 
   type: 2
-  tile: {fileID: 0}
+  tile: {fileID: 11400000, guid: ec74b3f2d0012004788bd955d5c9aa0c, type: 2}

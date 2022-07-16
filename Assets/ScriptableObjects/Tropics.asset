@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Tropics
   m_EditorClassIdentifier: 
   type: 7
-  tile: {fileID: 0}
+  tile: {fileID: 11400000, guid: cad64511b57e8de4391ab302643754fb, type: 2}
