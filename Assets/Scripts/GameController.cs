@@ -60,11 +60,42 @@ public class GameController : MonoBehaviour
         });
     }
 
-    public void afterPass()
+    public HashSet<Vector2Int> GetCoastTiles()
     {
-        foreach (TerrainTile element in _mapController.possibleTiles)
+        HashSet<Vector2Int> coastTiles = new HashSet<Vector2Int>();
+        var tiles = MapController.Instance().Tiles;
+        foreach (var tile in tiles.Keys)
         {
-            Console.Write($"{element} ");
+            var neighbors = MapController.Instance().GetNeighbors(tile).ToList();
+            foreach (var neighbor in neighbors)
+            {
+                if (tiles.ContainsKey(neighbor))
+                {
+                    if (tiles[neighbor].type == TerrainType.Water && tiles[tile].type != TerrainType.Water);
+                    coastTiles.Add(tile);
+                    break;
+                }
+            }
+        }
+        return coastTiles;
+    }
+
+    class NoNonWaterTilesRemainingException : ApplicationException{}
+
+    public void GenerateRandomWaterOnCoast(int amount)
+    {
+        for (int i = 0; i < amount; ++i) 
+        {
+            HashSet<Vector2Int> coastTiles = GetCoastTiles();
+            if (coastTiles.Count > 0)
+            {
+                var randomCoastTile = coastTiles.ToArray()[Random.Range(0, coastTiles.Count-1)];
+                MapController.Instance().Tiles[randomCoastTile].type = TerrainType.Water;
+            }
+            else
+            {
+                throw new NoNonWaterTilesRemainingException();
+            }
         }
     }
 }
