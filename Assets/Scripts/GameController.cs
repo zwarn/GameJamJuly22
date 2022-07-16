@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UI;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class GameController : MonoBehaviour
 {
     private static GameController _instance;
+    private double WaterTilesToGenerateAtAndOfRound = 1;
 
     public static GameController Instance()
     {
@@ -34,6 +36,8 @@ public class GameController : MonoBehaviour
         TerrainTile toPlace = SelectionUI.Instance().GETSelectedTile();
         _mapController.ChangeTile(tilePosition, toPlace);
         Produce();
+        GenerateRandomWaterOnCoast((int)WaterTilesToGenerateAtAndOfRound);
+        WaterTilesToGenerateAtAndOfRound += 0.1;
         Events.Instance().OnMadeMove();
     }
 
