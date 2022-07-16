@@ -38,6 +38,12 @@ public class MapController : MonoBehaviour
         _tiles.ToList().ForEach(pair => { _tilemap.SetTile((Vector3Int) pair.Key, pair.Value.tile); });
     }
 
+    public void ChangeTile(Vector2Int position, TerrainTile tile)
+    {
+        _tiles[position] = tile;
+        _tilemap.SetTile((Vector3Int) position, tile.tile);
+    }
+
     private void GenerateTiles()
     {
         _tiles.Clear();
