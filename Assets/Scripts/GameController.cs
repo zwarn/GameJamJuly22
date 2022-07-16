@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UI;
 using UnityEngine;
 
@@ -29,8 +30,34 @@ public class GameController : MonoBehaviour
 
     public void PlaceTile(Vector2Int tilePosition)
     {
-        _mapController.ChangeTile(tilePosition, SelectionUI.Instance().GETSelectedTile());
+        TerrainTile toPlace = SelectionUI.Instance().GETSelectedTile();
+        _mapController.ChangeTile(tilePosition, toPlace);
+        Produce();
         Events.Instance().OnMadeMove();
+    }
+
+    private void Produce()
+    {
+        _mapController.Tiles.ToList().ForEach(pair =>
+        {
+            var neighborPosition = _mapController.GetNeighbors(pair.Key);
+            var terrains = neighborPosition.ToList().Where(pos => _mapController.Tiles.ContainsKey(pos))
+                .Select(pos => _mapController.Tiles[pos]).ToList();
+            terrains.Add(pair.Value);
+            var types = terrains.ToList().Select(terrains => terrains.type).ToList();
+
+            if (types.Contains(TerrainType.Water) && types.Contains(TerrainType.Forest) &&
+                types.Contains(TerrainType.Meadows))
+            {
+                InventoryController.Instance().AddResourceCount(ResourceType.Wood, 1);
+            }
+
+            if (types.Contains(TerrainType.Water) && types.Contains(TerrainType.Rock) &&
+                types.Contains(TerrainType.Meadows))
+            {
+                InventoryController.Instance().AddResourceCount(ResourceType.Stone, 1);
+            }
+        });
     }
 
     public void afterPass()

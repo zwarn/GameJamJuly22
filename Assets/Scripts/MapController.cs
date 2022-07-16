@@ -21,7 +21,7 @@ public class MapController : MonoBehaviour
     }
 
     [SerializeField] private Tilemap _tilemap;
-    private Dictionary<Vector2Int, TerrainTile> _tiles = new Dictionary<Vector2Int, TerrainTile>();
+    public readonly Dictionary<Vector2Int, TerrainTile> Tiles = new Dictionary<Vector2Int, TerrainTile>();
     public int width = 10;
     public int height = 6;
     public TerrainTile[] possibleTiles;
@@ -35,40 +35,42 @@ public class MapController : MonoBehaviour
     private void UpdateMap()
     {
         _tilemap.ClearAllTiles();
-        _tiles.ToList().ForEach(pair => { _tilemap.SetTile((Vector3Int) pair.Key, pair.Value.tile); });
+        Tiles.ToList().ForEach(pair => { _tilemap.SetTile((Vector3Int) pair.Key, pair.Value.tile); });
     }
 
     public void ChangeTile(Vector2Int position, TerrainTile tile)
     {
-        _tiles[position] = tile;
+        Tiles[position] = tile;
         _tilemap.SetTile((Vector3Int) position, tile.tile);
     }
 
     private void GenerateTiles()
     {
-        _tiles.Clear();
+        Tiles.Clear();
 
         fillFirstRowWithWater();
         fillAllButFirstRowWithSand();
     }
 
-    private void fillFirstRowWithWater() {
+    private void fillFirstRowWithWater()
+    {
         for (int y = 0; y < height; y++)
         {
             Vector2Int position = new Vector2Int(0, y);
             TerrainTile tile = possibleTiles[1];
-            _tiles.Add(position, tile);
+            Tiles.Add(position, tile);
         }
     }
 
-    private void fillAllButFirstRowWithSand() {
+    private void fillAllButFirstRowWithSand()
+    {
         for (int x = 1; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
                 Vector2Int position = new Vector2Int(x, y);
                 TerrainTile tile = possibleTiles[0];
-                _tiles.Add(position, tile);
+                Tiles.Add(position, tile);
             }
         }
     }
@@ -100,5 +102,10 @@ public class MapController : MonoBehaviour
                 pos + Vector2Int.left + Vector2Int.down,
             };
         }
+    }
+
+    public TerrainTile GetTile(Vector2Int pos)
+    {
+        return Tiles[pos];
     }
 }
