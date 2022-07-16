@@ -7,12 +7,6 @@ public class TerrainTile : ScriptableObject
 {
     public TerrainType type;
     public Tile tile;
-    public int height;
-
-    public void lowerTerrainHeight()
-    {
-        --height;
-    }
 }
 
 [Serializable]
