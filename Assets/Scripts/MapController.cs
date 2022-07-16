@@ -47,12 +47,27 @@ public class MapController : MonoBehaviour
     private void GenerateTiles()
     {
         _tiles.Clear();
-        for (int x = 0; x < width; x++)
+
+        fillFirstRowWithWater();
+        fillAllButFirstRowWithSand();
+    }
+
+    private void fillFirstRowWithWater() {
+        for (int y = 0; y < height; y++)
+        {
+            Vector2Int position = new Vector2Int(0, y);
+            TerrainTile tile = possibleTiles[1];
+            _tiles.Add(position, tile);
+        }
+    }
+
+    private void fillAllButFirstRowWithSand() {
+        for (int x = 1; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
                 Vector2Int position = new Vector2Int(x, y);
-                TerrainTile tile = possibleTiles[Random.Range(0, possibleTiles.Length)];
+                TerrainTile tile = possibleTiles[0];
                 _tiles.Add(position, tile);
             }
         }
