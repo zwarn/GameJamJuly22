@@ -26,17 +26,8 @@ namespace UI
         private void Start()
         {
             _mapController = MapController.Instance();
-            Regenerate();
-        }
-
-        private void OnEnable()
-        {
             Events.Instance().MoveMade += Regenerate;
-        }
-
-        private void OnDisable()
-        {
-            Events.Instance().MoveMade -= Regenerate;
+            Regenerate();
         }
 
         public TerrainTile GETSelectedTile()

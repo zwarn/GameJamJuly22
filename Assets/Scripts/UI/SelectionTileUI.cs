@@ -22,7 +22,7 @@ namespace UI
             get => _selected;
             set
             {
-                SelectionImage.enabled = _selected;
+                SelectionImage.enabled = value;
                 _selected = value;
             }
         }
