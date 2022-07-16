@@ -51,4 +51,33 @@ public class MapController : MonoBehaviour
             }
         }
     }
+
+    public Vector2Int[] GetNeighbors(Vector2Int pos)
+    {
+        var odd = pos.y % 2 == 1;
+        if (odd)
+        {
+            return new[]
+            {
+                pos + Vector2Int.down,
+                pos + Vector2Int.left,
+                pos + Vector2Int.right,
+                pos + Vector2Int.up,
+                pos + Vector2Int.right + Vector2Int.up,
+                pos + Vector2Int.right + Vector2Int.down,
+            };
+        }
+        else
+        {
+            return new[]
+            {
+                pos + Vector2Int.down,
+                pos + Vector2Int.left,
+                pos + Vector2Int.right,
+                pos + Vector2Int.up,
+                pos + Vector2Int.left + Vector2Int.up,
+                pos + Vector2Int.left + Vector2Int.down,
+            };
+        }
+    }
 }

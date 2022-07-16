@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 public class CursorController : MonoBehaviour
@@ -17,8 +19,14 @@ public class CursorController : MonoBehaviour
     }
 
     public GameObject cursor;
-    public Tilemap Tilemap;
+    public Tilemap tilemap;
     private Vector2Int _currentPosition;
+    private MapController _mapController;
+
+    private void Start()
+    {
+        _mapController = MapController.Instance();
+    }
 
     private void Update()
     {
@@ -52,7 +60,7 @@ public class CursorController : MonoBehaviour
 
     public Vector3 CursorPosition()
     {
-        var position = Tilemap.GetCellCenterWorld((Vector3Int) _currentPosition);
+        var position = tilemap.GetCellCenterWorld((Vector3Int) _currentPosition);
         position.z = 0;
         return position;
     }
@@ -60,5 +68,18 @@ public class CursorController : MonoBehaviour
     private void centerCursor()
     {
         cursor.transform.position = CursorPosition();
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (_mapController == null)
+        {
+            return;
+        }
+
+        _mapController.GetNeighbors(_currentPosition).ToList().ForEach(tile =>
+        {
+            Gizmos.DrawSphere(tilemap.GetCellCenterWorld((Vector3Int) tile), 0.3f);
+        });
     }
 }
