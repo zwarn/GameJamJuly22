@@ -59,7 +59,7 @@ public class CursorController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameController.Instance().PlaceTile();
+            GameController.Instance().PlaceTile(CursorPosition());
         }
     }
 

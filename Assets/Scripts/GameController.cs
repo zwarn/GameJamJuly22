@@ -27,9 +27,9 @@ public class GameController : MonoBehaviour
         _mapController = MapController.Instance();
     }
 
-    public void PlaceTile()
+    public void PlaceTile(Vector2Int tilePosition)
     {
-        _mapController.ChangeTile(_cursorController.CursorPosition(), SelectionUI.Instance().GETSelectedTile());
+        _mapController.ChangeTile(tilePosition, SelectionUI.Instance().GETSelectedTile());
         Events.Instance().OnMadeMove();
     }
 
