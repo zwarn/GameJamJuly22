@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db383fa53c03457fb7e78d963c2b3b66, type: 3}
   m_Name: Windmill
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: a7ea0a6bb36d69841820664ecd90ba08, type: 3}
-  hasBeenAchieved: 0
+  icon: {fileID: 21300000, guid: b2a2f27dcf2d9284d8dea79aab1383bf, type: 3}
+  hasBeenAchieved: 1

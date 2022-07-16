@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db383fa53c03457fb7e78d963c2b3b66, type: 3}
   m_Name: Computer
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 60c3dd9371257d241a0b926acd554600, type: 3}
-  hasBeenAchieved: 0
+  icon: {fileID: 21300000, guid: 8f2c0c61a7bb3d44da3872f539ac28ad, type: 3}
+  hasBeenAchieved: 1

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db383fa53c03457fb7e78d963c2b3b66, type: 3}
   m_Name: Rocket
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 997536844adfe324da52bdbd66438f47, type: 3}
-  hasBeenAchieved: 0
+  icon: {fileID: 21300000, guid: d7e6c31615cfb8740806b118dc59f2ba, type: 3}
+  hasBeenAchieved: 1

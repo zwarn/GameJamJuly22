@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db383fa53c03457fb7e78d963c2b3b66, type: 3}
   m_Name: LightBulb
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 1faba4faf4df6c04d80537ecef90e665, type: 3}
-  hasBeenAchieved: 0
+  icon: {fileID: 21300000, guid: 17fec8cd543d14747b8adc41cda114a1, type: 3}
+  hasBeenAchieved: 1
