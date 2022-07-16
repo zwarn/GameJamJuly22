@@ -50,9 +50,15 @@ public class CursorController : MonoBehaviour
         }
     }
 
-    private void centerCursor()
+    public Vector3 CursorPosition()
     {
         var position = Tilemap.GetCellCenterWorld((Vector3Int) _currentPosition);
-        cursor.transform.position = position;
+        position.z = 0;
+        return position;
+    }
+
+    private void centerCursor()
+    {
+        cursor.transform.position = CursorPosition();
     }
 }
